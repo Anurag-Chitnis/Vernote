@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+        <link rel="stylesheet" href="../static/dashboard.css">
+        <title>Document</title>
+    </head>
+<body>
+<div id="app">
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">
+        Website
+      </a>
+    </div>
+    <label for="menu-toggle" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <input type="checkbox" id="menu-toggle" class="is-hidden"/>
+    <div class="nav-right nav-menu">
+      <a class="nav-item is-tab is-hidden-tablet">
+        <span class="icon"><i class="fa fa-home"></i></span> Home
+      </a>
+      <a class="nav-item is-tab is-hidden-tablet">
+        <span class="icon"><i class="fa fa-table"></i></span> Links
+      </a>
+      <a class="nav-item is-tab is-hidden-tablet">
+        <span class="icon"><i class="fa fa-info"></i></span> About
+      </a>
+      
+      <a class="nav-item is-tab is-active">
+        <span class="icon"><i class="fa fa-user"></i></span>
+      </a>
+      <a href="/logout" class="nav-item is-tab">
+        <span class="icon"><i class="fa fa-sign-out"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="main-content columns is-fullheight">
+  
+  <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
+    <p class="menu-label is-hidden-touch">Navigation</p>
+    <ul class="menu-list">
+      <li>
+        <a href="/dashboard" class="">
+          <span class="icon"><i class="fa fa-home"></i></span> Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="is-active">
+          <span class="icon"><i class="fa fa-table"></i></span> Links
+        </a>
+
+        <ul>
+          <li>
+            <a href="/post/add">
+              <span class="icon is-small"><i class="fa fa-link"></i></span>Add Post
+            </a>
+          </li>
+          <li>
+            <a href="/post/edit">
+              <span class="icon is-small"><i class="fa fa-link"></i></span>Edit Post
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="">
+          <span class="icon"><i class="fa fa-info"></i></span> About
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="container column is-10">
+    <div class="section"> 
+      <% notes.forEach(notes => { %>
+        <div class="card card-width">
+            <div class="card-header"><p class="card-header-title"><%=notes.title %></p></div>
+            <div class="card-content"><div class="content"><%=notes.description %></div></div>
+            <footer class="card-footer">
+              <a href="/post/edit/<%=notes._id%>" class="card-footer-item">Edit</a>
+              <form  method="POST" action="/dashboard/<%=notes.id%>?_method=DELETE">
+                <a href="" class="card-footer-item">
+                  <input class="button card-footer-item" type="submit" value="Delete"></input>
+                </a>
+              </form>
+            </footer>
+        </div>
+        <br />
+      <% }) %>
+    </div>
+  </div>
+  
+</section>
+
+<footer class="footer is-hidden">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Hello</p>
+    </div>
+  </div>
+</footer>
+    
+  </div>
+</body>
+</html>

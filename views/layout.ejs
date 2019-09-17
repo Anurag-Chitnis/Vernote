@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <%-body %>
+</body>
+<script>
+    const content = document.querySelector('.content');
+    const proto = document.querySelectorAll('.proto');
+    const left = document.querySelector('#left');
+    left.addEventListener('mousemove', (e) => {
+        let move = (e.clientX * 0.05);
+        let move2 = (e.clientX * 0.003);
+        content.style.transform = `translateX(${move2}%)`;
+        proto.forEach(element => {
+            element.style.transform = `translateX(${move}%)`;
+        });
+    });
+</script>
+</html>
